@@ -55,6 +55,10 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
       expect(response.body.elegivel).to.be.equals(true);
     })
 
+    it('A requisição deve retornar um json com a chave "economiaAnualDeCO2" com o valor sendo a quantidade de CO2 que será economizada em formato numérico', () => {
+      expect(response.body.economiaAnualDeCO2).to.be.a('number');
+    })
+
   });
 
 });
