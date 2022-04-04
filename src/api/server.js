@@ -10,3 +10,5 @@ app.use(err);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server's on at ${PORT}`));
+
+module.exports = app;

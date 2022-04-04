@@ -4,8 +4,9 @@
   "description": "Projeto desenvolvido em Node.js para teste tecnico de backend para Lemon Energy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/api/server.js"
+    "start": "node src/api/server.js",
+    "dev": "nodemon src/api/server.js",
+    "test": "mocha ./src/tests/*$NAME*.test.js --exit"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,11 @@
     "mongodb": "^4.4.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.2.2",
+    "mongodb-memory-server": "^6.9.6",
+    "nodemon": "^2.0.15",
+    "sinon": "^13.0.1"
   }
 }
