@@ -1,0 +1,28 @@
+{
+  "name": "lemon-energy",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido em Node.js para teste tecnico de backend para Lemon Energy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gusttavocaruso/lemon-energy.git"
+  },
+  "author": "Gustavo Caruso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gusttavocaruso/lemon-energy/issues"
+  },
+  "homepage": "https://github.com/gusttavocaruso/lemon-energy#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "joi": "^17.6.0",
+    "mongodb": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
