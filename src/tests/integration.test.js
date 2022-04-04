@@ -51,9 +51,9 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
       expect(response).to.have.status(201);
     })
 
-    // it('A requisição deve retornar a mensagem: Account has been created sucessfuly', () => {
-    //   expect(response.body.message).to.be.equals('Account has been created sucessfuly');
-    // })
+    it('A requisição deve retornar um json com a chave "elegivel" com o valor true', () => {
+      expect(response.body.elegivel).to.be.equals(true);
+    })
 
   });
 
