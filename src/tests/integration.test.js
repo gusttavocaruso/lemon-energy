@@ -151,4 +151,49 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
 
   });
 
+  describe('4 - Testa quando são informados critérios de elegibilidade inválidos para as categorias "classeDeConsumo" & "modalidadeTarifaria" ', () => {
+
+    before(async () => {
+      response = await chai.request(server)
+        .post('/admittance')
+        .send({
+          "numeroDoDocumento": "23031738808",
+          "tipoDeConexao": "bifasico",
+          "classeDeConsumo": "publico",
+          "modalidadeTarifaria": "azul",
+          "historicoDeConsumo": [
+            3878,
+            9760,
+            5976,
+            2797,
+            2481,
+            5731,
+            7538,
+            4392,
+            7859,
+            4160,
+            6941,
+            4597
+          ]
+        });
+    });
+
+    it('Deve retornar o status 200', () => {
+      expect(response).to.have.status(200);
+    })
+
+    it('A requisição deve retornar um json com a chave "elegivel" com o valor false', () => {
+      expect(response.body.elegivel).to.be.equals(false);
+    })
+
+    it('A requisição deve retornar um json com a chave "razoesInelegibilidade" e ela deve ser um array', () => {
+      expect(response.body.razoesInelegibilidade).to.be.a('array');
+    })
+
+    it('A chave "razoesInelegibilidade" deve ser um array com comprimento de 2 itens', () => {
+      expect(response.body.razoesInelegibilidade).to.have.a.lengthOf(2);
+    })
+
+  });
+
 });
