@@ -2,12 +2,13 @@ const model = require('../models/admissionModel');
 const validate = require('../utils/validationFunct');
 
 const admission = async (customerPayload) => {
-  const x = validate.eligibilityCriteria(customerPayload);
-  console.log(x);
+  const isRefused = validate.eligibilityCriteria(customerPayload);
 
+  if (isRefused) {
+    return { elegivel: false, razoesInelegibilidade: isRefused }
+  }
 
-  const customerId = await model.register(customerPayload);
-
+  await model.register(customerPayload);
   return { elegivel: true, economiaAnualDeCO2: 0 };
 }
 
