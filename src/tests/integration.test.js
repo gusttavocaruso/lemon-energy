@@ -47,8 +47,8 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
         });
     });
 
-    it('Deve retornar o status 201', () => {
-      expect(response).to.have.status(201);
+    it('Deve retornar o status 200', () => {
+      expect(response).to.have.status(200);
     })
 
     it('A requisição deve retornar um json com a chave "elegivel" com o valor true', () => {
@@ -57,6 +57,51 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
 
     it('A requisição deve retornar um json com a chave "economiaAnualDeCO2" com o valor sendo a quantidade de CO2 que será economizada em formato numérico', () => {
       expect(response.body.economiaAnualDeCO2).to.be.a('number');
+    })
+
+  });
+
+  describe('2 - Testa quando é informados critérios de elegibilidade inválido para categoria "classeDeConsumo" ', () => {
+
+    before(async () => {
+      response = await chai.request(server)
+        .post('/admittance')
+        .send({
+          "numeroDoDocumento": "14041738806",
+          "tipoDeConexao": "bifasico",
+          "classeDeConsumo": "rural",
+          "modalidadeTarifaria": "convencional",
+          "historicoDeConsumo": [
+            3878,
+            9760,
+            5976,
+            2797,
+            2481,
+            5731,
+            7538,
+            4392,
+            7859,
+            4160,
+            6941,
+            4597
+          ]
+        });
+    });
+
+    it('Deve retornar o status 200', () => {
+      expect(response).to.have.status(200);
+    })
+
+    it('A requisição deve retornar um json com a chave "elegivel" com o valor false', () => {
+      expect(response.body.elegivel).to.be.equals(false);
+    })
+
+    it('A requisição deve retornar um json com a chave "razoesInelegibilidade"e ela deve ser um array', () => {
+      expect(response.body.razoesInelegibilidade).to.be.a('array');
+    })
+
+    it('A chave "razoesInelegibilidade" deve ser um array que contem o texto: "Classe de consumo não aceita"', () => {
+      expect(response.body.razoesInelegibilidade[0]).to.be.equals('Classe de consumo não aceita');
     })
 
   });
