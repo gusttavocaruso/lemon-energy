@@ -20,7 +20,7 @@ const modalityTax = ({ modalidadeTarifaria }) => {
 const minConsumption = ({ tipoDeConexao, historicoDeConsumo }) => {
   const somaConsump = historicoDeConsumo.reduce((acc, consump) => acc + consump);
   const avaregeConsump = somaConsump / historicoDeConsumo.length;
-  console.log(avaregeConsump);
+  // console.log(avaregeConsump);
 
   if (tipoDeConexao === 'monofasico' && avaregeConsump < 400) return false; 
   if (tipoDeConexao === 'bifasico' && avaregeConsump < 500) return false;
@@ -38,7 +38,7 @@ const eligibilityCriteria = (customerPayload) => {
   const nOkClass = 'Classe de consumo não aceita';
   const nOkConsump = 'Consumo muito baixo para tipo de conexão';
 
-  //se a classe de consumo e a taxa tarifária estão OK,
+  //se a classe de consumo, a taxa tarifária e o consumo minimo estão OK,
   // retorna falso para 'is refused'
   if (isClassOk && isTaxOk && isConsumpOk) return false;
 
@@ -63,6 +63,7 @@ const eligibilityCriteria = (customerPayload) => {
   //mas a classe de consumo sim.
   if (isClassOk && !isTaxOk && !isConsumpOk) return [nOkTax, nOkConsump];
 
+  //se a classe de consumo, a taxa tarifária e o consumo minimo não estão OK:
   return [nOkClass, nOkTax, nOkConsump];
 };
 
