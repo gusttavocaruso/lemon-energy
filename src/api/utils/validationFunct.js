@@ -1,6 +1,3 @@
-const joi = require('@hapi/joi');
-const errHandle = require('./errHendle');
-
 const consumptionClasses = ({ classeDeConsumo }) => {
   if (classeDeConsumo.includes('rural')
   || classeDeConsumo.includes('publico')) {
@@ -20,24 +17,15 @@ const modalityTax = ({ modalidadeTarifaria }) => {
 const minConsumption = ({ tipoDeConexao, historicoDeConsumo }) => {
   const somaConsump = historicoDeConsumo.reduce((acc, consump) => acc + consump);
   const avaregeConsump = somaConsump / historicoDeConsumo.length;
-  // console.log(avaregeConsump);
 
   if (tipoDeConexao === 'monofasico' && avaregeConsump < 400) return false; 
   if (tipoDeConexao === 'bifasico' && avaregeConsump < 500) return false;
   if (tipoDeConexao === 'trifasico' && avaregeConsump < 750) return false;
 
   return true;
-}
+};
 
-const eligibilityCriteria = (customerPayload) => {
-  const isClassOk = consumptionClasses(customerPayload);
-  const isTaxOk = modalityTax(customerPayload);
-  const isConsumpOk = minConsumption(customerPayload);
-
-  const nOkTax = 'Modalidade tarifária não aceita';
-  const nOkClass = 'Classe de consumo não aceita';
-  const nOkConsump = 'Consumo muito baixo para tipo de conexão';
-
+const criteriaCheck = (isClassOk, isTaxOk, isConsumpOk, nOkTax, nOkClass, nOkConsump) => {
   //se a classe de consumo, a taxa tarifária e o consumo minimo estão OK,
   // retorna falso para 'is refused'
   if (isClassOk && isTaxOk && isConsumpOk) return false;
@@ -65,6 +53,20 @@ const eligibilityCriteria = (customerPayload) => {
 
   //se a classe de consumo, a taxa tarifária e o consumo minimo não estão OK:
   return [nOkClass, nOkTax, nOkConsump];
+};
+
+const eligibilityCriteria = (customerPayload) => {
+  const isClassOk = consumptionClasses(customerPayload);
+  const isTaxOk = modalityTax(customerPayload);
+  const isConsumpOk = minConsumption(customerPayload);
+
+  const nOkTax = 'Modalidade tarifária não aceita';
+  const nOkClass = 'Classe de consumo não aceita';
+  const nOkConsump = 'Consumo muito baixo para tipo de conexão';
+
+  const checkStatus = criteriaCheck(isClassOk, isTaxOk, isConsumpOk, nOkTax, nOkClass, nOkConsump);
+
+  return checkStatus;
 };
 
 module.exports = {
