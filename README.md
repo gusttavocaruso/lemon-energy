@@ -41,11 +41,11 @@ Esse projeto esta hospedado na plataforma <a href="https://www.heroku.com/" targ
 
 O Banco de dados utilizado é o <a target="_blank" href="https://www.mongodb.com/">MongoDB</a> e está hospedado no <a target="_blank" href="https://cloud.mongodb.com/">MongoCloud Atlas</a>
 
-_**Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` utilize um client como <a target="_blank" href="https://insomnia.rest/">Insomnia</a>, <a target="_blank" href="https://www.postman.com/">Postman</a> ou similar.**_
+**Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` utilize um client como <a target="_blank" href="https://insomnia.rest/">Insomnia</a>, <a target="_blank" href="https://www.postman.com/">Postman</a> ou similar.**
 
 
 ### https://lemon-energy-api.herokuapp.com/admittance - requisição HTTP: `POST` <br>
-  **Esse endpoint deve receber como entrada um JSON no formato:**
+  _Esse endpoint deve receber como entrada um JSON no formato:_
 
   ```json
     {
@@ -57,7 +57,7 @@ _**Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` 
     }
   ```
 
-  **tendo respeitados os critérios abaixo como valores:**
+  _tendo respeitados os critérios abaixo como valores:_
   ```javascript
     const numeroDoDocumento = cpf || cnpj;
         const cpf = { type: 'string', pattern: '^\\d{11}$' };
@@ -80,7 +80,7 @@ _**Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` 
       };
   ```
 
-  **Esse endpoint terá dois possíveis retornos.**
+  _Esse endpoint terá dois possíveis retornos._
 
   1 - Cliente elegível. 
   ```json
