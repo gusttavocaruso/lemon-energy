@@ -14,8 +14,8 @@ const admission = async (customerPayload) => {
     return { elegivel: false, razoesInelegibilidade: isRefused }
   }
 
-  await model.register(customerPayload);
   const CO2 = consumpInCO2(customerPayload);
+  await model.register(customerPayload, CO2);
 
   return { elegivel: true, economiaAnualDeCO2: CO2 };
 };
