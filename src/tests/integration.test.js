@@ -204,7 +204,7 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
         .send({
           "numeroDoDocumento": "23031738808",
           "tipoDeConexao": "bifasico",
-          "classeDeConsumo": "publico",
+          "classeDeConsumo": "poderPublico",
           "modalidadeTarifaria": "azul",
           "historicoDeConsumo": [
             3878,
@@ -354,7 +354,7 @@ describe('Critérios de Elegibilidade de Cliente ', () => {
         .send({
           "numeroDoDocumento": "24031766806",
           "tipoDeConexao": "trifasico",
-          "classeDeConsumo": "rural",
+          "classeDeConsumo": "poderPublico",
           "modalidadeTarifaria": "azul",
           "historicoDeConsumo": [
             387,

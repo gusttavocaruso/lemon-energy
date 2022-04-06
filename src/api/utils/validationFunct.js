@@ -1,6 +1,6 @@
 const consumptionClasses = ({ classeDeConsumo }) => {
   if (classeDeConsumo.includes('rural')
-  || classeDeConsumo.includes('publico')) {
+  || classeDeConsumo.includes('poderPublico')) {
     return false;
   };
   return true;
