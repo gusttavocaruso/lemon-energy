@@ -1,6 +1,6 @@
 <div align="center">
 
-# Eligibilidade para aquisição de novos cliente
+# Eligibilidade para aquisição de novos clientes
 
 
 Esse repositório contém o código-fonte escrito em Node.js que dá origem a uma API capaz de verificar a elegibilidade de novos clientes desenvolvida por Gustavo Caruso para teste técnico da [Lemon Energia](https://www.energialemon.com.br/) ©
@@ -86,7 +86,7 @@ O Banco de dados utilizado é o <a target="_blank" href="https://www.mongodb.com
   ```json
     {
       "elegivel": true,
-      "economiaAnualDeCO2": 00, //valor em kWh
+      "economiaAnualDeCO2": 00
     }
   ```
 
