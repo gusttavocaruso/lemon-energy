@@ -55,7 +55,7 @@ A rota disponível é: /admittance
       "tipoDeConexao": "string",
       "classeDeConsumo": "string",
       "modalidadeTarifaria": "string",
-      "historicoDeConsumo": [ 1, 2, 3, .., 12 ]
+      "historicoDeConsumo": [ 1, 2, 3, "..", 12 ]
     }
   ```
 
@@ -88,7 +88,7 @@ A rota disponível é: /admittance
   ```json
     {
       "elegivel": true,
-      "economiaAnualDeCO2": 00.0, //Valor em kW/h
+      "economiaAnualDeCO2": "00.0", //Valor em kW/h
     }
   ```
 
