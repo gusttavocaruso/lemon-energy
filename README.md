@@ -37,16 +37,15 @@ No processo de aquisição de clientes, fazemos a checagem de elegibilidade da m
 
 ## Informações para consumo da API:
 
-<!-- Esse projeto esta hospedado na plataforma <a href="https://www.heroku.com/" target="_blank">HEROKU</a> e pode ser acessado através <a href="https://dg-cc-gustacaru.herokuapp.com/" target="_blank">DESTE LINK</a> -->
+Esse projeto esta hospedado na plataforma <a href="https://www.heroku.com/" target="_blank">HEROKU</a> e pode ser acessado através <a href="https://lemon-energy-api.herokuapp.com/" target="_blank">DESTE LINK</a>
 
-<!-- O Banco de dados utilizado é o <a target="_blank" href="https://www.mongodb.com/">MongoDB</a> e está hospedado no <a target="_blank" href="https://cloud.mongodb.com/">MongoCloud Atlas</a> -->
+O Banco de dados utilizado é o <a target="_blank" href="https://www.mongodb.com/">MongoDB</a> e está hospedado no <a target="_blank" href="https://cloud.mongodb.com/">MongoCloud Atlas</a>
 
-Esse projeto não tem front-end, por isso, para acessar a rota utilize um client como 
+Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` utilize um client como 
 <a target="_blank" href="https://insomnia.rest/">Insomnia</a>, <a target="_blank" href="https://www.postman.com/">Postman</a> ou similar.
 
-A rota disponível é: /admittance
 
-###  1. http://localhost:3001/admittance - requisição HTTP: `POST` <br>
+### https://lemon-energy-api.herokuapp.com/admittance - requisição HTTP: `POST` <br>
   **Esse endpoint deve receber como entrada um JSON no formato:**
 
   ```json
@@ -88,7 +87,7 @@ A rota disponível é: /admittance
   ```json
     {
       "elegivel": true,
-      "economiaAnualDeCO2": "00.0", // Valor em kWh
+      "economiaAnualDeCO2": 00.0, // Valor em kWh
     }
   ```
 
@@ -122,7 +121,7 @@ e também, as depêndencias de desenvolvimento:
 ### Para rodar esse projeto na sua máquina:
 - Clone esse repositório para sua máquina e instale as dependencias com um gerenciador de pacotes de sua escolha - `npm`, `yarn`;
 
-- Instale o banco de dados `mongodb` OU rode um container com sua imagem com docker.
+- Instale e execute o banco de dados `mongodb` OU rode um container com sua imagem com docker.
 
 - Para iniciar o servidor rode o comando `npm start` ou `npm run dev`. Ele rodará na porta :3001;
 
