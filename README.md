@@ -41,8 +41,7 @@ Esse projeto esta hospedado na plataforma <a href="https://www.heroku.com/" targ
 
 O Banco de dados utilizado é o <a target="_blank" href="https://www.mongodb.com/">MongoDB</a> e está hospedado no <a target="_blank" href="https://cloud.mongodb.com/">MongoCloud Atlas</a>
 
-Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` utilize um client como 
-<a target="_blank" href="https://insomnia.rest/">Insomnia</a>, <a target="_blank" href="https://www.postman.com/">Postman</a> ou similar.
+_**Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` utilize um client como <a target="_blank" href="https://insomnia.rest/">Insomnia</a>, <a target="_blank" href="https://www.postman.com/">Postman</a> ou similar.**_
 
 
 ### https://lemon-energy-api.herokuapp.com/admittance - requisição HTTP: `POST` <br>
@@ -87,7 +86,7 @@ Esse projeto não tem front-end, por isso, para acessar a rota `/admittance` uti
   ```json
     {
       "elegivel": true,
-      "economiaAnualDeCO2": 00.0, // Valor em kWh
+      "economiaAnualDeCO2": 00, //valor em kWh
     }
   ```
 
