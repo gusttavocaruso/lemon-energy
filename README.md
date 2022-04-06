@@ -3,7 +3,7 @@
 # Eligibilidade para aquisição de novos cliente
 
 
-Esse repositório contém o código fonte em Node.js com express e mongodb que dá origem a uma API desenvolvida por Gustavo Caruso para teste técnico da [Lemon Energia](https://www.energialemon.com.br/) ©
+Esse repositório contém o código-fonte escrito em Node.js que dá origem a uma API capaz de verificar a elegibilidade de novos clientes desenvolvida por Gustavo Caruso para teste técnico da [Lemon Energia](https://www.energialemon.com.br/) ©
 
 <img src="https://assets.website-files.com/5f7e0994165e365ab297bfe7/5fb28b8004eb4b7dff6fcf23_logo-original.png" width="100px">
 
@@ -88,7 +88,7 @@ A rota disponível é: /admittance
   ```json
     {
       "elegivel": true,
-      "economiaAnualDeCO2": "00.0", //Valor em kW/h
+      "economiaAnualDeCO2": "00.0", // Valor em kWh
     }
   ```
 
