@@ -20,7 +20,7 @@ module.exports = (_req, res, _next) => {
       <br><br>
 
       <span style="font-size: large; font-weight: 500; background-color: green; border-radius: 10px; text-decoration: none; color: white;  width: 30%">
-        Acesse o limão e tenha acesso a documentação.
+        Clique no limão e tenha acesso a documentação.
       </span>
 
     </body>
