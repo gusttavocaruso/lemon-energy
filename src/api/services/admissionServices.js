@@ -8,10 +8,10 @@ const consumpInCO2 = ({ historicoDeConsumo }) => {
 };
 
 const admission = async (customerPayload) => {
-  const isRefused = validate.eligibilityCriteria(customerPayload);
+  const eligibilityCriteria = validate.eligibilityCriteria(customerPayload);
 
-  if (isRefused) {
-    return { elegivel: false, razoesInelegibilidade: isRefused }
+  if (eligibilityCriteria.length > 0) {
+    return { elegivel: false, razoesInelegibilidade: eligibilityCriteria }
   }
 
   const CO2 = consumpInCO2(customerPayload);

@@ -1,3 +1,7 @@
+const joi = require('@hapi/joi');
+const errHandle = require('./errHandle');
+
+
 const consumptionClasses = ({ classeDeConsumo }) => {
   if (classeDeConsumo.includes('rural')
   || classeDeConsumo.includes('poderPublico')) {
@@ -25,10 +29,13 @@ const minConsumption = ({ tipoDeConexao, historicoDeConsumo }) => {
   return true;
 };
 
-const criteriaCheck = (isClassOk, isTaxOk, isConsumpOk, nOkTax, nOkClass, nOkConsump) => {
+const criteriaCheck = (isClassOk, isTaxOk, isConsumpOk) => {
+  const nOkTax = 'Modalidade tarifária não aceita';
+  const nOkClass = 'Classe de consumo não aceita';
+  const nOkConsump = 'Consumo muito baixo para tipo de conexão';
   //se a classe de consumo, a taxa tarifária e o consumo minimo estão OK,
   // retorna falso para 'is refused'
-  if (isClassOk && isTaxOk && isConsumpOk) return false;
+  if (isClassOk && isTaxOk && isConsumpOk) return [];
 
   //se a classe de consumo não estiver OK:
   if (!isClassOk && isTaxOk && isConsumpOk) return [nOkClass];
@@ -55,18 +62,34 @@ const criteriaCheck = (isClassOk, isTaxOk, isConsumpOk, nOkTax, nOkClass, nOkCon
   return [nOkClass, nOkTax, nOkConsump];
 };
 
+const customerPayloadValidation = (customerPayload) => {
+
+  const payloadValidation = joi.object({
+    numeroDoDocumento: joi.string().min(11).max(14).required(),
+    tipoDeConexao: joi.string().valid('monofasico', 'bifasico', 'trifasico').required(),
+    classeDeConsumo: joi.string()
+      .valid('residencial', 'industrial', 'comercial', 'rural','poderPublico')
+      .required(),
+    modalidadeTarifaria: joi.string()
+      .valid('azul', 'branca', 'verde', 'convencional')
+      .required(),
+    historicoDeConsumo: joi.array()
+      .items(joi.number().min(0).max(9999))
+      .min(3).max(12).required(),
+  });
+
+  const { error } = payloadValidation.validate(customerPayload);
+  if (error) throw errHandle(404, error.message);
+}
+
 const eligibilityCriteria = (customerPayload) => {
+  customerPayloadValidation(customerPayload);
+
   const isClassOk = consumptionClasses(customerPayload);
   const isTaxOk = modalityTax(customerPayload);
   const isConsumpOk = minConsumption(customerPayload);
 
-  const nOkTax = 'Modalidade tarifária não aceita';
-  const nOkClass = 'Classe de consumo não aceita';
-  const nOkConsump = 'Consumo muito baixo para tipo de conexão';
-
-  const checkStatus = criteriaCheck(isClassOk, isTaxOk, isConsumpOk, nOkTax, nOkClass, nOkConsump);
-
-  return checkStatus;
+  return criteriaCheck(isClassOk, isTaxOk, isConsumpOk);
 };
 
 module.exports = {

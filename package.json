@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/gusttavocaruso/lemon-energy#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "express": "^4.17.3",
     "mongodb": "^4.4.1"
   },
