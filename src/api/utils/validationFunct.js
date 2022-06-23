@@ -33,8 +33,9 @@ const criteriaCheck = (isClassOk, isTaxOk, isConsumpOk) => {
   const nOkTax = 'Modalidade tarifária não aceita';
   const nOkClass = 'Classe de consumo não aceita';
   const nOkConsump = 'Consumo muito baixo para tipo de conexão';
-  //se a classe de consumo, a taxa tarifária e o consumo minimo estão OK,
-  // retorna falso para 'is refused'
+
+  /* se a classe de consumo, a taxa tarifária e o 
+  consumo minimo estão OK, retorna falso para 'is refused' */
   if (isClassOk && isTaxOk && isConsumpOk) return [];
 
   //se a classe de consumo não estiver OK:
@@ -83,6 +84,7 @@ const customerPayloadValidation = (customerPayload) => {
 }
 
 const eligibilityCriteria = (customerPayload) => {
+
   customerPayloadValidation(customerPayload);
 
   const isClassOk = consumptionClasses(customerPayload);
