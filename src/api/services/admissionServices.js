@@ -11,7 +11,7 @@ const admission = async (customerPayload) => {
   const eligibilityCriteria = validate.eligibilityCriteria(customerPayload);
 
   if (eligibilityCriteria.length > 0) {
-    return { elegivel: false, razoesInelegibilidade: eligibilityCriteria }
+    return { elegivel: false, razoesInelegibilidade: eligibilityCriteria };
   }
 
   const CO2 = consumpInCO2(customerPayload);
